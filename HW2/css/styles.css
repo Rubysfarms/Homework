@@ -22,8 +22,8 @@
 .mn-elmnt {
     display: inline-block;
     padding: 23px;
-    border-left: 2px solid #35444f;
-    border-right: 2px solid #35444f;
+    border-left: 1px solid #35444f;
+    border-right: 1px solid #35444f;
     transition: all 0.5s ease;
 
 }
@@ -32,8 +32,8 @@
     display: inline-block;
     padding: 23px;
     background-color: #242e36;
-    border-left: 2px solid #b4b7ba;
-    border-right: 2px solid #b4b7ba;
+    border-left: 1px solid #b4b7ba;
+    border-right: 1px solid #b4b7ba;
 
 }
 
@@ -49,6 +49,7 @@
 #nav-menu {
     background-color: #35444f;
     text-align: center;
+    font-size: 0;
 }
 
 .nav-href {
@@ -78,7 +79,7 @@
     box-sizing: border-box;
     padding: 27px 0 27px 50px;
     margin: 1px;
-    transition: all 0.5s ease-out;
+    transition: 0.5s ease-out;
 }
 
 .side-elmnt:hover {
