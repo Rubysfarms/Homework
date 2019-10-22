@@ -1,0 +1,210 @@
+@import url("https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.main {
+    position: relative;
+    margin: 0 auto;
+    width: 1366px;
+    height: 768px;
+}
+
+.container {
+    position: absolute;
+    width: 1066px;
+    height: 100%;
+    right: 0;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    margin: auto;
+}
+
+.what-to-visit {
+    margin-top: 50px;
+}
+
+.special-tour-block {
+    box-sizing: border-box;
+    display: block;
+    width: 310px;
+    text-decoration: none;
+    float: left;
+    margin-bottom: 30px;
+}
+
+.special-tour-block:not(:nth-of-type(3n+3)){
+    margin-right: 68px;
+}
+
+.special-tour-block:hover .special-tour-content .special-tour-button {
+    bottom: 0;
+    transition: all 1s ease .2s;
+}
+
+.special-tour-block:not(:hover) .special-tour-content .special-tour-button {
+    bottom: -65px;
+    transition: all 1s ease .2s;
+}
+
+.special-tour-content{
+    box-sizing: border-box;
+    position: relative;
+    width: 310px;
+    height: 203px;
+    overflow: hidden;
+    box-shadow: 0 12px 12px 0 rgba(0,0,0,0.75);
+}
+
+.special-tour-img {
+    box-sizing: border-box;
+    border: 2px solid;
+    display: block;
+    width: 100%;
+    border-image: linear-gradient(to bottom, white 0%, black 100%);
+    border-image-slice: 1;
+}
+
+.special-tour-button {
+    position: absolute;
+    width: 100%;
+    background-color: #f26522;
+    padding-top: 15px;
+}
+
+.special-tour-button {
+    padding-top: 0;
+    padding-bottom: 5px;
+}
+
+.tour-button-from {
+    color: white;
+    font-family: Verdana;
+    font-size: 10px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+i[class="fas fa-euro-sign"] {
+    padding-left: 20px;
+    display: inline-block;
+    font-size: 18px;
+    color: white;
+}
+
+.tour-button-price{
+    display: inline-block;
+    color: white;
+    font-family: Verdana;
+    font-size: 20px;
+}
+
+.tour-button-view{
+    padding-left: 125px;
+    display: inline-block;
+    color: white;
+    font-family: Verdana;
+    font-size: 14px;
+    text-align: right;
+    line-height: 2;
+}
+
+.tour-button-view:after{
+    padding-left: 20px;
+    content: "\203A";
+    color: white;
+    font-size: 14px;
+
+}
+
+.special-tour-block:hover .special-tour-name {
+    color: #f26522;
+    transition: all 1s ease;
+}
+
+.special-tour-block:not(:hover) .special-tour-name {
+    color: white;
+    transition: all 1s ease;
+}
+
+.special-tour-name {
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 18px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.website-name {
+    display: inline-block;
+    width: 180px;
+    text-decoration: none;
+    margin-top: 50px;
+}
+
+.site-logo {
+    width: 46px;
+    height: 44px;
+    background-image: url("../img/church-white.png");
+    background-size: 100%;
+    float: left;
+}
+
+.milan{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 29px;
+    text-align: center;
+    line-height: 0.8;
+    color: white;
+}
+
+.holidays{
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 18px;
+    text-align: center;
+    line-height: 1.5;
+    color: white;
+}
+
+.website-name:hover .site-logo {
+    background-image: url("../img/church-orange.png");
+}
+
+.website-name:hover .milan,
+.website-name:hover .holidays {
+    color: #f26522;
+}
+
+.contact-info {
+    display: inline-block;
+    text-align: right;
+    color: white;
+    font-family: Verdana;
+    font-weight: bold;
+    font-size: 18px;
+    margin-left: 610px;
+}
+
+.contact-info-mail, .contact-info-number {
+    margin: 0;
+    line-height: 1.5;
+}
+
+.copyright {
+    color: white;
+    font-family: Verdana;
+    font-size: 12px;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
+
