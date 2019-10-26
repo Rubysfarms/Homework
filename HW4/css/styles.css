@@ -1,0 +1,326 @@
+ html, body {
+    height: 100vh;
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: 0;
+}
+
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+.footer {
+    height: 50px;
+    background: rgba(0,0,0,0.5);
+}
+
+.journey {
+    box-sizing: border-box;
+    display: inline-block;
+    color: white;
+    font-family: Verdana;
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 14px;
+    margin-left: 80px;
+    text-decoration: none;
+    transition: all ease 0.5s;
+}
+
+.journey:hover {
+    color:  #3cb878;
+}
+
+.header-buttons{
+    float: right;
+}
+
+.bg-ic_forum {
+    width: 28px; height: 20px;
+    background: url('../img/css_sprites.png') -10px -10px;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.bg-ic_forum:hover {
+    background: url('../img/css_sprites.png') -10px -50px;
+}
+
+.bg-ic_caledar {
+    width: 19px; height: 19px;
+    background: url('../img/css_sprites.png') -10px -90px;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.bg-ic_caledar:hover{
+    background: url('../img/css_sprites.png') -88px -90px;
+}
+
+.bg-ic_journey {
+    width: 20px; height: 20px;
+    background: url('../img/css_sprites.png') -58px -50px;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 15px;
+}
+
+.bg-ic_journey:hover {
+    background: url('../img/css_sprites.png') -106px -50px;
+}
+
+.bg-line {
+    width: 1px; height: 19px;
+    background: url('../img/css_sprites.png') -146px -10px;
+    display: inline-block;
+    margin-right: 30px;
+    margin-top: 15px;
+    float: right;
+}
+
+.login_or_signup {
+    float: right;
+    color: white;
+    font-family: Verdana;
+    font-size: 14px;
+    margin-top: 15px;
+    margin-right: 75px;
+}
+
+.login_or_signup a {
+    color: #3cb878;
+    text-decoration: none;
+}
+
+.login_or_signup a:hover{
+    text-decoration: underline;
+}
+
+.entrance {
+    box-sizing: border-box;
+    position: absolute;
+    right: 0;
+    left: 0;
+    top: 50px;
+    bottom: 0;
+    margin: auto;
+    width: 450px;
+    height: 584px;
+    background: white;
+    border-radius: 10px;
+    padding-top: 30px;
+}
+
+.quad {
+    display: inline-block;
+    height: 18px;
+    width: 18px;
+    background: #3cb878;
+}
+
+.signup {
+    margin-top: 0;
+    margin-bottom: 0;
+    display: inline-block;
+    font-family: Verdana;
+    font-size: 20px;
+    margin-left: 40px;
+    width: 100px;
+}
+
+.login {
+    font-family: Verdana;
+    font-size: 14px;
+    margin-left: 190px;
+    text-decoration: none;
+    color: #3cb878;
+}
+
+.login:hover{
+    text-decoration: underline;
+}
+
+.socials {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.facebook {
+    padding: 12px 16px 12px 16px;
+    font-family: Verdana;
+    font-size: 16px;
+    display: inline-block;
+    background: #264b96;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: all ease 0.5s;
+}
+
+.facebook:hover {
+    background: #1f3c79;
+}
+
+.fa-facebook-f {
+    font-size: 20px;
+    margin-right: 16px;
+}
+
+.facebook .button-bg-line {
+     width: 1px; height: 19px;
+     background: url('../img/css_sprites.png') -146px -10px;
+     display: inline-block;
+     margin-right: 12px;
+ }
+
+
+.google {
+    padding: 12px 23px 12px 12px;
+    font-family: Verdana;
+    font-size: 16px;
+    display: inline-block;
+    background: #c3412c;
+    border-radius: 5px;
+    color: white;
+    text-decoration: none;
+    transition: all ease 0.5s;
+}
+
+.google:hover {
+    background: #9a3323;
+}
+
+.fa-google-plus-g {
+    font-size: 20px;
+    margin-right: 12px;
+}
+
+.google .button-bg-line {
+    width: 1px; height: 19px;
+    background: url('../img/css_sprites.png') -146px -10px;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+
+.underline {
+    text-align: center;
+    margin-top: 25px;
+    padding-bottom: 6px;
+}
+
+.or-line {
+    margin-bottom: 3px;
+    height: 1px;
+    width: 132px;
+    background-color: #cccccc;
+    display: inline-block;
+}
+
+.or {
+    font-family: Verdana;
+    font-size: 14px;
+    display: inline-block;
+    color: #ccc;
+    width: 16px;
+    text-align: center;
+    padding: 0 20px 0 20px;
+}
+
+.input-info {
+    color: #ccc;
+    display: block;
+    margin: 10px auto;
+    width: 320px;
+    height: 46px;
+    border-radius: 5px;
+    box-sizing: border-box;
+    padding-left: 25px;
+    font-family: Verdana;
+    font-size: 14px;
+    border: 1px solid #ccc;
+}
+
+.input-info[placeholder="Confirm Password"] {
+    margin-bottom: 20px;
+}
+
+.input-info:focus {
+    border-style: none;
+    box-shadow: 0px 5px 5px 0px #ccc;
+    outline: none;
+    color: black;
+}
+
+#agreement + label[for="agreement"]:before {
+    margin-left: 65px;
+    content: "\2714";
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20px;
+    height: 20px;
+    padding-left: 3px;
+    padding-right: 3px;
+    margin-right: 10px;
+    color: transparent;
+    vertical-align: bottom;
+    cursor: pointer;
+}
+
+
+#agreement:checked + label[for="agreement"]:before {
+    color: #3cb878;
+    cursor: pointer;
+}
+
+#agreement {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
+    margin-left: 65px;
+}
+
+label[for="agreement"] {
+    font-family: Verdana;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.terms {
+    color: #3cb878;
+    text-decoration: none;
+}
+
+.terms:hover{
+    text-decoration: underline;
+}
+
+input[value="Create Account"]{
+    background-color: #3cb878;
+    color: white;
+    border-style: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all ease 0.5s;
+    font-size: 16px;
+    margin-top: 25px;
+}
+
+input:hover[value="Create Account"] {
+    background-color: #2e8d5c;
+}
+
+input:focus[value="Create Account"] {
+    color: white;
+}
+
+
+
+
