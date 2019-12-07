@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        let num1 = +prompt('enter number 1');
+        let num2 = +prompt('enter number 2');
+        let operator = prompt('enter Math operator');
+        function calculation() {
+            if (operator === '+') {
+                console.log(num1 + operator + num2 + '=' + (num1+num2));
+            } else if (operator === '-') {
+                console.log(num1 + operator + num2 + '=' + (num1-num2));
+            } else if (operator === '/') {
+                console.log(num1 + operator + num2 + '=' + (num1/num2));
+            } else {
+                console.log(num1 + operator + num2 + '=' + (num1*num2));    
+            }    
+
+        } 
+        calculation();        
+    </script>    
+</head>
+<body>
+    
+</body>
+</html>
