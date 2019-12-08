@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        const userArray = [1, 15, 'blabla bla', null, undefined, true, 56, [189, 'text', false]];
+        const userType = 'string';
+
+        function getData(arr, type) {
+           if (type === 'string'){
+                let returnArray = [];
+                arr.forEach(function(item) {
+                    if (typeof(item) !== typeof('')) {
+                        returnArray.push(item);
+                    } else {};
+                });
+                return returnArray;     
+           } else if (type === 'number') {
+                let returnArray = [];
+                arr.forEach(function(item) {
+                    if (typeof(item) !== typeof(1)) {
+                        returnArray.push(item);
+                    } else {};
+                });
+                return returnArray;
+           } else if (type === 'object') {
+                let returnArray = [];
+                arr.forEach(function(item) {
+                    if (typeof(item) !== typeof([])) {
+                        returnArray.push(item);
+                    } else {};
+                });
+                return returnArray;
+           } else if (type === 'boolean') {
+                let returnArray = [];
+                arr.forEach(function(item) {
+                    if (typeof(item) !== typeof(true)) {
+                        returnArray.push(item);
+                    } else {};
+                });
+                return returnArray;
+
+           } else {
+               alert('check array values please');
+           }
+
+        };
+
+        let newArray = getData(userArray, userType);
+        console.log(newArray);
+
+
+    </script>    
+</head>
+<body>
+    
+</body>
+</html>
