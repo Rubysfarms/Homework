@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+       
+</head>
+<body>
+  <script>
+    function createNewUser() {
+        let firstName = prompt('Enter your name');
+        let lastName = prompt('Enter your surname');
+        let birthday = prompt('enter birth date using next style "dd.mm.yyyy"');
+        let birthYear = birthday.slice(6);
+        return {name: firstName, 'last name': lastName, 
+          getLogin() {
+            console.log((this.name[0] + this['last name']).toLowerCase())
+          },
+          getAge () {
+          let age = `${2019-birthYear}`;
+          return age;
+          }, 
+          getPassword () {
+          let password = firstName[0].toUpperCase() + lastName.toLowerCase() + birthYear;
+          return password; 
+          }
+        }
+      }
+
+    let getNewUser = createNewUser();
+    console.log(getNewUser.getLogin());
+    console.log(getNewUser.getAge());
+    console.log(getNewUser.getPassword());
+    
+    
+    
+        
+    
+  </script> 
+</body>
+</html>
