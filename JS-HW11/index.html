@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Homework-buttons</title>
+	<script>
+
+	window.onload = function() {
+
+		const buttonS = document.getElementById('S');
+		const buttonE = document.getElementById('E');
+		const buttonO = document.getElementById('O');
+		const buttonN = document.getElementById('N');
+		const buttonL = document.getElementById('L');
+		const buttonZ = document.getElementById('Z');
+		const buttonEnter = document.getElementById('Enter');
+		const buttonsCollection = document.getElementsByClassName('btn');
+		const buttonsArray = Array.prototype.slice.call(buttonsCollection);
+
+		function clearAllButtons() {
+			for(item of buttonsArray) {
+				item.classList.remove('btn_active');
+				item.classList.add('btn');				
+			}
+		} 
+
+		document.addEventListener('keyup', function(event) {
+  		if (event.code == 'KeyZ') {
+    		clearAllButtons();			
+			buttonZ.classList.add('btn_active');		
+  		} else if (event.code == 'KeyL'){
+			clearAllButtons();			
+			buttonL.classList.add('btn_active');
+		} else if (event.code == 'KeyN'){
+			clearAllButtons();			
+			buttonN.classList.add('btn_active');
+		} else if (event.code == 'KeyO'){
+			clearAllButtons();			
+			buttonO.classList.add('btn_active');
+		} else if (event.code == 'KeyE'){
+			clearAllButtons();			
+			buttonE.classList.add('btn_active');
+		} else if (event.code == 'KeyS'){
+			clearAllButtons();			
+			buttonS.classList.add('btn_active');
+		} else if (event.code == 'Enter'){
+			clearAllButtons();			
+			buttonEnter.classList.add('btn_active');
+		}
+		});
+	}
+	</script>
+	<style>
+	.btn-wrapper{
+		height: 60vh;
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.btn{
+		border: none;
+		border-radius: 20px;
+		min-width: 120px;
+		padding: 7px;
+		color: #fff;
+		font-size: 14px;
+		background-color: #33333a;
+		cursor: pointer;
+	}
+	.btn:active,
+	.btn:focus{
+		outline: none;
+	}
+
+	.btn_active {
+		border: none;
+		border-radius: 20px;
+		min-width: 120px;
+		padding: 7px;
+		color: #fff;
+		font-size: 14px;
+		background-color: #6495ed;
+		cursor: pointer;
+	}
+
+	</style>
+</head>
+<body>
+	<div class="btn-wrapper">
+    <button id="Enter" class="btn">Enter</button>
+		<button id="S" class="btn">S</button>
+		<button id="E" class="btn">E</button>
+		<button id="O" class="btn">O</button>
+		<button id="N" class="btn">N</button>
+		<button id="L" class="btn">L</button>
+		<button id="Z" class="btn">Z</button>
+	</div>
+</body>
+</html>
