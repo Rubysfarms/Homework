@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Homework-buttons</title>
+    <script>
+    window.onload = function() {
+      let switcher1 = document.getElementsByTagName('i')[0];
+      let switcher2 = document.getElementsByTagName('i')[1];
+      let form1 = document.getElementsByTagName('input')[0];
+      let form2 = document.getElementsByTagName('input')[1];
+      let form1Value;
+      let form2Value;
+      let wrongText = document.getElementById('wrong_text');
+      
+      switcher1.onclick = function () {
+        let condition = form1.getAttribute('type');
+               
+        if(condition === 'password') {
+          let changedForm = form1.setAttribute('type', 'text');                    
+          switcher1.classList.remove('fa-eye');
+          switcher1.classList.add('fa-eye-slash');          
+        } else {
+          let changedForm = form1.setAttribute('type', 'password');
+          switcher1.classList.remove('fa-eye-slash');
+          switcher1.classList.add('fa-eye');
+        };        
+      }; 
+
+      switcher2.onclick = function () {
+        let condition = form2.getAttribute('type');
+               
+        if(condition === 'password') {
+          let changedForm = form2.setAttribute('type', 'text');                    
+          switcher2.classList.remove('fa-eye');
+          switcher2.classList.add('fa-eye-slash');          
+        } else {
+          let changedForm = form2.setAttribute('type', 'password');
+          switcher2.classList.remove('fa-eye-slash');
+          switcher2.classList.add('fa-eye');          
+        };        
+      }; 
+
+      const checkButton = document.getElementById('check_button');
+
+      checkButton.onclick = function() {
+        form1Value = form1.value;
+        form2Value = form2.value;
+        if (form2Value === form1Value) {
+          wrongText.style.visibility = 'hidden';
+          let showEnterInfo = function () {
+          alert('you are welcome');
+          };
+          setTimeout(showEnterInfo, 100);
+        } else {
+          wrongText.style.visibility = 'visible';          
+        };
+      };
+
+
+    }
+    </script>
+    <style>
+      .password-form {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .input-wrapper {
+        position: relative;
+				width: intrinsic;       
+			  width: -moz-max-content;   
+  			width: -webkit-max-content;
+      }
+
+      .input-wrapper input {
+        min-width: 120px;
+        padding: 10px;
+        margin-bottom: 24px;
+      }
+
+      .input-wrapper i {
+        position: absolute;
+        right: 10px;
+        top: 12px;
+        color: grey;
+      }
+
+			.btn{
+				width: 150px;
+			}
+
+      #wrong_text {
+        color: red;
+        visibility: hidden;
+      }
+
+    </style>
+  </head>
+  <body>
+    <form class="password-form" action="#" type="POST">
+			<label class="input-wrapper">
+				Ввести пароль
+				<input type="password"/>
+				<i class="fas fa-eye icon-password"></i>
+			</label>
+      <label class="input-wrapper">
+				Подтвердить пароль
+				<input type="password"/>
+				<i class="fas fa-eye icon-password"></i>
+			</label>
+      <span id="wrong_text">Нужно ввести одинаковые значения</span>
+      <button type="submit" class="btn" id="check_button">Подтвердить</button>
+    </form>
+  </body>
+</html>
