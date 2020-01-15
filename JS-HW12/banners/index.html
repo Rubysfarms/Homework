@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Banners</title>
+    <script>
+    window.onload = function() {
+
+      let basicValue = 0;
+      const img0 = document.getElementById('0');
+      const img1 = document.getElementById('1');
+      const img2 = document.getElementById('2');
+      const img3 = document.getElementById('3');
+      const startButton = document.getElementById('start');
+      const stopButton = document.getElementById('stop');
+
+      img0.style.visibility = 'visible';
+      img1.style.visibility = 'hidden';
+      img2.style.visibility = 'hidden';
+      img3.style.visibility = 'hidden';
+
+      function showButtons () {
+        startButton.style.visibility = 'visible';
+        stopButton.style.visibility = 'visible';
+      }
+
+      setTimeout(showButtons, 1000);
+      
+      function valueIterator() {
+        if (basicValue <= 2) {
+          ++basicValue;
+        } else {
+          basicValue = 0;          
+        }
+      };
+
+      function visubilityChanger(x) {
+        switch (x) {
+          case 0:
+          img0.style.visibility = 'visible';
+          img1.style.visibility = 'hidden';
+          img2.style.visibility = 'hidden';
+          img3.style.visibility = 'hidden';
+          break;
+          case 1:
+          img0.style.visibility = 'hidden';
+          img1.style.visibility = 'visible';
+          img2.style.visibility = 'hidden';
+          img3.style.visibility = 'hidden';
+          break;  
+          case 2:
+          img0.style.visibility = 'hidden';
+          img1.style.visibility = 'hidden';
+          img2.style.visibility = 'visible';
+          img3.style.visibility = 'hidden';
+          break;
+          case 3:
+          img0.style.visibility = 'hidden';
+          img1.style.visibility = 'hidden';
+          img2.style.visibility = 'hidden';
+          img3.style.visibility = 'visible';
+          break;
+          default:
+            console.log('hello');
+        }
+      };
+
+      function showSpecialImg() {
+        valueIterator();
+        visubilityChanger(basicValue);        
+      }
+
+      let iterator = setInterval(showSpecialImg, 10000);      
+
+      stopButton.onclick = function() {
+        clearInterval(iterator);
+      }
+
+      startButton.onclick = function() {
+        iterator = setInterval(showSpecialImg, 10000); 
+      }
+
+    }
+    </script>
+    <style>
+      .image-to-show {
+        width: 400px;
+        height: 400px;
+      }
+
+      .images-wrapper {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+      }
+
+      .buttons {
+        visibility: hidden;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div class="images-wrapper">
+      <img id="0" src="./img/1.jpg" alt="image of game" class="image-to-show"/>
+      <img id="1" src="./img/2.jpg" alt="image of game" class="image-to-show"/>
+      <img id="2" src="./img/3.JPG" alt="image of game" class="image-to-show"/>
+      <img id="3" src="./img/4.png" alt="image of game" class="image-to-show"/>
+      <button id="start" class="buttons">Возобновить показ</button>
+      <button id="stop" class="buttons">Прекратить</button>
+    </div>
+  </body>
+</html>
