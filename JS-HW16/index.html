@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<script>
+    window.onload = function() {
+
+        
+        // let blabla = prompt('value');
+        // console.log(+blabla);
+        // console.log(typeof(+blabla));
+        
+    
+    
+        
+
+
+        factorialCalculate = function(value) {
+            let newArray = [];
+            for(let i=1; i<=+value; i++){
+                newArray.push(i);
+            };
+
+            let resultNumber = newArray.reduce(function(resultValue, item){
+                return item * resultValue;    
+            });
+
+            return alert(`${newArray.join('*')} = ${resultNumber}`);
+        };
+
+        
+        valueChecker = function(question, oldValue) {
+            // debugger
+            let newValue = prompt(question, oldValue);    
+            switch (newValue) {
+                case '':
+                    valueChecker('Do not leave string empty', newValue);
+                break;
+                case null:
+                    valueChecker('Are you sure, you want to leave?');
+                break;
+                case '0':
+                    alert('1');
+                break;
+                default:
+                    if (+newValue >= 1 && Number.isInteger(+newValue)){
+                        factorialCalculate(+newValue);
+                    } else {
+                        valueChecker('Only integer number! (ZERO or more)', newValue);
+                    }                
+                break;
+            }
+        };
+        
+        valueChecker('Enter integer number to calculate factorial');
+    
+
+   }    
+
+</script>
+<style>
+    #enter-text {
+        width: 1000px;
+        height: 40px;
+        text-align: top;
+        font-size: 30px;
+    }
+
+</style>
+<body>
+    <!-- <form id="form-submit" action="">
+        <input type="text" id="enter-text">
+    </form>
+     -->
+</body>
+</html>
