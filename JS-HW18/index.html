@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+
+        let student = {
+            "name" : "",
+            "last name" : "",
+        };
+        
+        student["name"] = prompt('Enter your name');
+        student["last name"] = prompt('Enter your last name');        
+
+        addDisciplincesAndMarks = () => {            
+            let tabel = {};
+            let discipline;
+            let mark; 
+
+            for (;;) {
+                discipline = prompt('Enter discipline');
+                if (discipline == undefined) {break};
+                mark = +prompt (`Enter ${discipline} mark`);
+                if (mark == undefined) {break};
+                tabel[discipline] = mark;
+                
+            };
+
+            return tabel;
+        };
+        
+        student["tabel"] = addDisciplincesAndMarks();
+
+        // let student = {};
+        // student["tabel"] = {Math:9, Geometry:10, History:5, English:12, PE:10, Art:11, Chemistry:3, Physics:8, Geography:10};
+        
+        let checkedMarks = [];
+
+        badMarks = () => {            
+            let noBadmarks;            
+            for(key in student["tabel"]){
+
+                if(student["tabel"][key] < 4){
+                    noBadmarks = 'badguy';   
+                } else {
+                    checkedMarks.push(student["tabel"][key]);
+                };
+            };
+            
+            if(noBadmarks !== 'badguy'){alert(`Студент ${student["name"]} ${student["last name"]} переведен на следующий курс`)};
+        }
+
+        badMarks();        
+        
+
+        averageMark = () => {
+            let sum = checkedMarks.reduce(function(resultValue, item){
+                let sum = resultValue + item
+                return sum;
+            });
+            let averageNum = sum/checkedMarks.length;
+            if(averageNum > 7) {alert(`Студент ${student["name"]} ${student["last name"]} будет получать стипендию, средний бал - ${averageNum.toFixed(1)}`)};            
+        };
+
+
+        averageMark();
+    
+    </script>
+
+</head>
+<body>
+    
+</body>
+</html>
