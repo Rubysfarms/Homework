@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ENERGY GYM</title>    
+    <link rel="stylesheet" href="./css/normalize.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link media="(min-width: 376px)" rel="stylesheet" href="./css/style-tablet.css">
+    <link media="(min-width: 769px)" rel="stylesheet" href="./css/style-desktop.css">
+</head>
+<body>
+    <header class="mainpanel">
+        <div class="container mainpanel-container-params">
+            <div class="mainpanel-logo"></div>
+            <div class="mainpanel-toggler-navbar">
+                <a href="#" class="toggler-activate" id="toggler-navbar">
+                    <div class="orange-line"></div>
+                    <div class="orange-line"></div>
+                    <div class="orange-line"></div>
+                </a>
+            </div>
+            <nav class="mainpanel-navbar visibility" id="navbar">
+                <ul class="navbar-nav">
+                    <li class="navbar-nav-item">
+                        <a href="#" class="navbar-nav-link">Home</a>
+                    </li>              
+                    <li class="navbar-nav-item">
+                        <a href="#" class="navbar-nav-link">Business</a>
+                    </li>               
+                    <li class="navbar-nav-item">
+                        <a href="#" class="navbar-nav-link">Contacts</a>
+                    </li>                
+                    <li class="navbar-nav-item">
+                        <a href="#" class="navbar-nav-link">Ru|Eng</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main class="mainscreen">
+        <div class="container mainscreen-container-params">
+            <div class="mainscreen-general">
+                <div class="mainscreen-general-maininfo">
+                    <div class="maininfo-clubname"><h2>ENERGY GYM</h2></div>
+                    <div class="maininfo-website">
+                        <a href="#" class="maininfo-website-link"><h3>Website</h3></a>
+                    </div>
+                </div>
+            </div>
+            <div class="decorationblock"></div>
+            <div class="mainscreen-textinfo">
+                <p>6 000 sq.m. of comfortable fitness with amazing view 
+                    of the right bank of Kiev, the Lavra and the Dnieper.
+                </p>
+            </div>
+        </div>
+    </main>
+    <section class="aboutus">
+        <div class="container about-container-params">
+            <div class="services">
+                <div class="service">
+                    <div class="service-icon" id="icon-fitness"></div>
+                    <div class="service-name">
+                        fitness center group training hall
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service-icon" id="icon-cardio"></div>
+                    <div class="service-name">
+                        cardio theater
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service-icon" id="icon-pool"></div>
+                    <div class="service-name">
+                        professional sports pool 25х15 m with 6 swim lanes и 2 wading pools
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service-icon" id="icon-children"></div>
+                    <div class="service-name">
+                        children’s club EnerKid 500 q.m.
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service-icon" id="icon-bar"></div>
+                    <div class="service-name">
+                        fitness bar
+                    </div>
+                </div>
+                <div class="service">
+                    <div class="service-icon" id="icon-boxing"></div>
+                    <div class="service-name">
+                        fight Club
+                    </div>
+                </div>
+            </div>
+        </div>    
+    </section>
+    <section class="location">
+        <div class="container location-container-params">
+            <div class="locations">
+                <div class="location-silverbreeze">
+                    <div class="silverbreeze-map"></div>
+                    <div class="silverbreeze-adress">
+                        1 Pavla Tychyny Ave, Kiev, Ukraine
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </section>
+    <section class="contact">
+        <div class="container contacts-container-params">
+            <div class="contact-ways">
+                <h4 class="contacts-text">CONTACTS</h4>
+                <div class="contact-way">
+                    <div class="contacts-icon" id="contact-icon-message"></div>
+                    <div class="contacts-service-name">
+                        <p class="display contacts-service-text">email</p>
+                        <p class="contacts-service-text">info@unicorn.com</p>
+                    </div>
+                </div>
+                <div class="contact-way">
+                    <div class="contacts-icon" id="contact-icon-telephone"></div>
+                    <div class="contacts-service-name">
+                        <p class="display contacts-service-text">call</p>
+                        <p class="contacts-service-text">+38050 777 00 00</p>
+                        <p class="contacts-service-text">+38050 777 00 00</p>
+                    </div>
+                </div>
+                <div class="contact-way">
+                    <div class="contacts-icon" id="contact-icon-adress"></div>
+                    <div class="contacts-service-name">
+                        <p class="display contacts-service-text">location</p>
+                        <p class="contacts-service-text">Kiev, Ukraine</p>
+                        <p class="contacts-service-text">Minsk, Belarus</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        const mainMenuButton = document.getElementById('toggler-navbar');
+        const mainMenu = document.getElementById('navbar');
+
+        mainMenuButton.addEventListener("click", function(){
+            mainMenu.classList.toggle('visibility');
+        });
+    </script>    
+</body>
+</html>

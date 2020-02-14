@@ -1,0 +1,295 @@
+/* global rules */
+@import url('https://fonts.googleapis.com/css?family=Montserrat&display=swap');
+
+
+body{
+    background-color: #151616;
+    color: #ffffff;    
+}
+
+h2 {
+    font-size: 28px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+h4 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+}
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+.container {
+    max-width: 100%;    
+}
+
+.visibility {
+    visibility: hidden;
+}
+
+.display {
+    display: none;
+}
+
+/* mainpanel */
+
+.mainpanel-container-params{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;  
+    padding: 5px 30px 5px 12px;
+}
+
+.mainpanel-logo {    
+    width: 89px;
+    height: 61px;    
+    background-image: url(../img/logo.png);
+    background-position: center;
+    background-size: contain;
+}
+
+.navbar-nav {
+    padding-inline-start: 0;
+}
+
+.mainpanel-toggler-navbar {
+    height: 100%;    
+}
+
+.toggler-activate {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.orange-line {
+    margin: 4px 0;
+    height: 2px;
+    width: 25px;
+    background-color: #F38A03;
+}
+
+.mainpanel-navbar {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: 71px;
+    right: 0;    
+    background-color: #a0a0a0;    
+}
+
+.navbar-nav-item{
+    list-style-type: none;    
+}
+
+.navbar-nav-link {
+    color: #ffffff;
+    text-decoration: none;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+}
+
+/* mainscreen */
+
+.mainscreen-general {
+    background-image: url(../img/general-back.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 375px;
+    overflow: hidden;   
+}
+
+.mainscreen-general-maininfo {
+    width: 257px;    
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 10%;
+    margin-left: 3%;
+}
+
+.maininfo-clubname {
+    height: 110px;
+    width: 100%;
+    background-color: #151616;
+    display: flex;
+    justify-content: center;
+    align-items: center;       
+}
+
+.maininfo-website {
+    margin-top: 20px;
+    height: 36px;
+    width: 131px;
+    background-color: #151616;
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+}
+
+.maininfo-website-link {
+    color: #fff;
+}
+
+.decorationblock {
+    margin: 0 0 0 auto;
+    width: 270px;
+    height: 65px;
+    background-color: #ED1260;   
+}
+
+.mainscreen-textinfo {
+    width: 70%;
+    margin: 40px auto 0 auto;
+}
+
+/* aboutus */
+
+.about-container-params {
+    padding: 0 10% 0 10%;
+}
+
+.services {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+.service {
+    width: 50%;
+    margin-top: 15px;    
+}
+
+.service-icon {
+    margin: 0 auto;
+    width: 65px;
+    height: 65px;
+}
+
+#icon-fitness {
+    background-image: url(../img/services/fitness.png);    
+}
+
+#icon-cardio {
+    background-image: url(../img/services/cardio.png);    
+}
+
+#icon-pool {
+    background-image: url(../img/services/pool.png);    
+}
+
+#icon-children {
+    background-image: url(../img/services/children.png);    
+}
+
+#icon-bar {
+    background-image: url(../img/services/bar.png);    
+}
+
+#icon-boxing {
+    background-image: url(../img/services/boxing.png);    
+}
+
+.service-name {
+    margin-top: 15px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* location */
+
+.location-container-params {
+    margin-top: 50px;       
+}
+
+.location-silverbreeze {
+    border: 3px solid #ED1260;
+    width: 345px;
+    margin: 0 auto;   
+}
+
+.silverbreeze-map {
+    background-image: url(../img/map.png);
+    width: 314px;
+    height: 128px;
+    margin: 10.5px auto;
+}
+
+.silverbreeze-adress {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+/* contacts */
+
+.contacts-container-params {
+    margin-top: 65px;    
+}
+
+.contact-ways {
+    margin: 0 auto;
+    border: 3px solid #F38A03;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contact-way {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
+}
+
+.contacts-icon {
+    height: 30px;
+    width: 30px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+#contact-icon-message {
+    background-image: url(../img/contacts/message.png);
+}
+
+#contact-icon-telephone {
+    background-image: url(../img/contacts/telephone.png);
+}
+
+#contact-icon-adress {
+    background-image: url(../img/contacts/location.png);
+}
+
+.contacts-service-name {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    flex-direction: column;    
+}
+
+.contacts-service-text {
+    margin: 5px 0 5px 20px;
+};
+
+
+

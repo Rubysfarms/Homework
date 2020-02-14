@@ -1,0 +1,198 @@
+/* global rules */
+
+p {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.95vw;
+    margin-left: 20px;
+}
+
+h2 {
+    font-size: 36px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 28px;
+}
+
+.display {
+    display: block;
+}
+
+/* mainpanel */
+
+.mainpanel-container-params{
+    padding-right: 6.5%;
+}
+
+.mainpanel-logo {
+    margin: 5px 8px 5px 8px;
+    width: 75px;
+    height: 51px;    
+}
+
+.mainpanel-toggler-navbar {
+    display: none;
+}
+
+.mainpanel-navbar {
+    visibility: visible;
+    position: static;
+    background-color: transparent;
+    display: flex;
+    width: 50%;            
+}
+
+.navbar-nav {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar-nav-item {
+    list-style-type: none;
+}
+
+.navbar-nav-link {
+    font-size: 1.57vw;
+}
+
+.mainscreen-general-maininfo {
+    width: 327px;       
+}
+
+.maininfo-clubname {
+    height: 141px;
+    width: 100%;           
+}
+
+.maininfo-website {
+    margin-top: 20px;
+    height: 55px;
+    width: 200px;      
+}
+
+/* mainscreen */
+
+.mainscreen-container-params {
+    padding-left: 11.5%;
+    padding-right: 6.5%;    
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.mainscreen-general {
+    width: 90%;
+    height: 513px;           
+}
+
+.decorationblock {
+    width: 10%;
+    height: 347px;
+    margin: 0;
+}
+
+.mainscreen-textinfo {
+    padding-top: 10px;
+    width: 90%;
+    margin: 0; 
+}
+
+/* aboutus  */
+
+.about-container-params {
+    padding-left: 11.5%;
+    padding-right: 6.5%;          
+}
+
+.services {
+    width: 90%;
+}
+
+.service {
+    margin-top: 40px;
+}
+
+.service-name {
+    font-size: 18px;
+    max-width: 275px;
+    margin-right: auto;
+    margin-left: auto;    
+}
+
+/* location */
+
+.location-container-params {
+    padding-left: 11.5%;
+    padding-right: 6.5%;
+}
+
+.locations {
+    width: 90%;
+}
+
+.location-silverbreeze {
+    border: 5px solid #ED1260;
+    width: 580px;
+    margin-right: 0 auto;   
+}
+
+.silverbreeze-map {
+    background-image: url(../img/map.png);
+    width: 525px;
+    height: 212px;
+    margin: 10.5px auto;
+    background-size: cover;
+}
+
+.silverbreeze-adress {
+    font-size: 22px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+/* contacts */
+
+
+.contacts-container-params {
+    padding-left: 11.5%;
+    padding-right: 6.5%;
+}
+
+.contact-ways {
+    width: 90%;
+    flex-direction: row;
+    border: none;     
+    align-items: flex-start;
+    padding: 0;
+    margin-left: 0;
+    margin-right: 0;
+    margin-bottom: 50px;  
+}
+
+.contacts-text {
+    flex: 1 1 100%;
+    font-size: 45px;    
+}
+
+.contact-way {
+    flex-direction: column;
+    flex: 1 1 33.3333333%;
+}
+
+.contacts-service-text {
+    margin-left: 0;
+    text-align: center;
+    font-size: 25px;
+}
+
+.contacts-icon {
+    margin-bottom: 15px;
+    height: 45px;
+    width: 45px;
+}
+
+
+
+
