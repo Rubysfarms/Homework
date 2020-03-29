@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        function Hamburger (size, stuffing, toppings) {
+            this.orderedHamburgerSize = Hamburger.prototype.paramSize(size);            
+            this.orderedHamburgerStuffing = Hamburger.prototype.paramStuffing(stuffing);
+            this.orderedHamburgerToppings = Hamburger.prototype.paramToppings(toppings);                                               
+        }
+        Hamburger.prototype = {
+            SIZE_SMALL : {price: 50, energy: 20},
+            SIZE_LARGE : {price: 100, energy: 40},
+            STUFFING_CHEESE : {price: 10, energy: 20},
+            STUFFING_SALAD : {price: 20, energy: 5},
+            STUFFING_POTATO : {price: 15, energy: 10},
+            TOPPING_MAYO : {price: 20, energy: 5},
+            TOPPING_SPICE : {price: 15, energy: 0},            
+            constructor : function(){},
+            paramSize : function(size){
+                switch (size) {
+                    case 'large':
+                        return(this.SIZE_LARGE);
+                    break;
+                    case 'small':
+                        return(this.SIZE_SMALL);
+                    break;
+                    default:
+                        alert('error');
+                    break;
+                }
+            },
+            paramStuffing : function(stuffing){
+                let choosenProducts = {};               
+                stuffing.includes('cheese') ? choosenProducts.Cheese = this.STUFFING_CHEESE : false ;
+                stuffing.includes('salad') ? choosenProducts.Salad = this.STUFFING_SALAD : false ;
+                stuffing.includes('potato') ? choosenProducts.Potato = this.STUFFING_POTATO : false ;                
+                return choosenProducts;                      
+            },
+            paramToppings : function(toppings){
+                let choosenProducts = {};               
+                toppings.includes('mayo') ? choosenProducts.Mayonnaise = this.TOPPING_MAYO : false ;
+                toppings.includes('spice') ? choosenProducts.Spices = this.TOPPING_SPICE : false ;                
+                return choosenProducts;                      
+            },            
+            addTopping : function(toppingName){
+                if(toppingName !== 'mayo' && toppingName !== 'spice'){this.throws('Incorrect ingridient')};
+                if(toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise !== undefined ){this.throws('Ingridient has been already choosen')};
+                if(toppingName === 'spice' && this.orderedHamburgerToppings.Spices !== undefined ){this.throws('Ingridient has been already choosen')};
+                let mayo = Hamburger.prototype.TOPPING_MAYO;
+                let spice = Hamburger.prototype.TOPPING_SPICE;                
+                toppingName === 'mayo' ? this.orderedHamburgerToppings.Mayonnaise = mayo : false;
+                toppingName === 'spice' ? this.orderedHamburgerToppings.Spices = spice :  false;                
+            },
+            removeTopping : function(toppingName){
+                if(toppingName !== 'mayo' && toppingName !== 'spice'){this.throws('Incorrect ingridient')};
+                if(toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise === undefined){this.throws('You dont have it already')};
+                if(toppingName === 'spice' && this.orderedHamburgerToppings.Spices === undefined ){this.throws('You dont have it already')};
+                toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise === Hamburger.prototype.TOPPING_MAYO ? delete this.orderedHamburgerToppings.Mayonnaise : false;
+                toppingName === 'spice' && this.orderedHamburgerToppings.Spices === Hamburger.prototype.TOPPING_SPICE ? delete this.orderedHamburgerToppings.Spices : false;
+            },
+            getToppings : function(){
+                return console.log(this.orderedHamburgerToppings);                
+            },
+            getSize : function(){
+                return console.log(this.orderedHamburgerSize);
+            },
+            getStuffing : function(){
+                return console.log(this.orderedHamburgerStuffing);
+            },
+            calculatePrice : function(){
+                let burgerPrice = this.orderedHamburgerSize.price;
+                let stuffingPrice = Object.values(this.orderedHamburgerStuffing).reduce(function(resultValue, item, index, array){
+                    let price = +item.price;
+                    return +resultValue + item.price;
+                },[0]);
+                let toppingPrice = Object.values(this.orderedHamburgerToppings).reduce(function(resultValue, item, index, array){
+                    let price = +item.price;
+                    return +resultValue + item.price;
+                },[0]);
+                return console.log(burgerPrice + toppingPrice + stuffingPrice);                              
+            },
+            calculateCalories : function(){
+                let burgerEnergy = this.orderedHamburgerSize.energy;
+                let stuffingEnergy = Object.values(this.orderedHamburgerStuffing).reduce(function(resultValue, item, index, array){
+                    let energy = +item.energy;
+                    return +resultValue + item.energy;
+                },[0]);
+                let toppingEnergy = Object.values(this.orderedHamburgerToppings).reduce(function(resultValue, item, index, array){
+                    let energy = +item.energy;
+                    return +resultValue + item.energy;
+                },[0]);
+                return console.log(burgerEnergy + toppingEnergy + stuffingEnergy);                              
+            },         
+            throws : function (element) {
+                console.log(element);                                
+            },
+        }
+        const myHamburger = new Hamburger('large',['cheese', 'salad', 'potato'],['mayo']);
+        console.log(myHamburger);
+        myHamburger.addTopping('asd');
+        myHamburger.addTopping('mayo');
+        myHamburger.removeTopping('spice');           
+        myHamburger.getToppings();
+        myHamburger.getSize();
+        myHamburger.getStuffing();
+        myHamburger.calculatePrice();
+        myHamburger.calculateCalories();           
+    </script>    
+</body>
+</html>
