@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div><span>PC Score:</span><span class="pc"></span></div>
+    <div><span>Human Score:</span><span class="human"></span></div>
+    <table>
+     <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    </table>
+    <button class="start-game">start EASY game</button>
+    <button class="start-game">start MEDIUM game</button>
+    <button class="start-game">start HARD game</button>
+    <style>
+        .mole {
+            background-color: red;
+            width: 100%;
+            height: 100%;
+        }
+        div {
+            text-align: center;
+        }
+        table {
+            margin: 0 auto;
+        }
+        td {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+        }
+        .start-game{
+            display: block;
+            margin: 10px auto;
+        }        
+    </style>
+    <script>       
+
+        const mole = {
+            visible : 'blue',
+            kicked : 'green',
+            lost: 'red',
+            strategy : function(){
+                const array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11];
+                array.sort(this.moleIsChoosing);
+                return array;             
+            },
+            moleIsChoosing : function(){
+                const value = Math.random() - 0.5;
+                return value;
+            },
+            moleWasKicked : function(){
+                playingTable.tableCells[playingTable.turnHole].bgColor = mole.kicked;
+                playingTable.humanScore = playingTable.humanScore + 1;
+                playingTable.humanScoreDOM.innerHTML = playingTable.humanScore;
+                playingTable.tableCells[playingTable.turnHole].removeEventListener('click', mole.moleWasKicked);
+                playingTable.turnHole = null;                
+            }                          
+        };
+        
+
+        const playingTable = {
+            allGameButtons : document.querySelectorAll('.start-game'), 
+            startEasyGameButton : document.getElementsByClassName('start-game')[0],
+            startMediumGameButton : document.getElementsByClassName('start-game')[1],
+            startHardGameButton : document.getElementsByClassName('start-game')[2],           
+            tableCells : document.querySelectorAll('td'),
+            pcScoreDOM : document.getElementsByClassName('pc')[0],
+            humanScoreDOM : document.getElementsByClassName('human')[0],
+            pcScore : 0,
+            humanScore : 0,
+            isDetected : mole.strategy(),
+            turnHole : null,            
+            isPlaying : function(speed){                
+                const interval = setInterval(function(){      
+                    if(playingTable.humanScore >= 7 ){alert('Human has won'); clearInterval(interval); location.reload();}
+                    else if (playingTable.pcScore >= 7){alert('PC has won'); clearInterval(interval); location.reload();}                     
+                    else if (playingTable.pcScore === 6 && playingTable.humanScore  == 6){alert('It is a draw'); clearInterval(interval); location.reload();};              
+                    if(playingTable.turnHole != undefined){
+                        playingTable.tableCells[playingTable.turnHole].bgColor = mole.lost;
+                        playingTable.pcScore = playingTable.pcScore + 1;
+                        playingTable.pcScoreDOM.innerHTML = playingTable.pcScore;
+                        playingTable.tableCells[playingTable.turnHole].removeEventListener('click', mole.moleWasKicked);                                            
+                    };                    
+                    playingTable.turnHole = playingTable.isDetected.shift();
+                    if(playingTable.turnHole === undefined){clearInterval(interval); clearInterval(interval); alert('It is a draw'); location.reload();};
+                    playingTable.tableCells[playingTable.turnHole].bgColor = mole.visible;
+                    playingTable.tableCells[playingTable.turnHole].addEventListener('click', mole.moleWasKicked);                                                          
+                }, speed);                
+            },
+            buttonsVisibility : function(state){
+                playingTable.allGameButtons.forEach(item => {
+                    item.style.visibility = state;                        
+                });
+            }                                           
+        }
+                
+        playingTable.startEasyGameButton.addEventListener('click', function(){
+            playingTable.buttonsVisibility('hidden');           
+            playingTable.isPlaying(1500);            
+        });
+        playingTable.startMediumGameButton.addEventListener('click', function(){
+            playingTable.buttonsVisibility('hidden');
+            playingTable.isPlaying(1000);            
+        });
+        playingTable.startHardGameButton.addEventListener('click', function(){
+            playingTable.buttonsVisibility('hidden');
+            playingTable.isPlaying(500);            
+        });         
+    </script>    
+</body>
+</html>
