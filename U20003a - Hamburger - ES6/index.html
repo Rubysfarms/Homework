@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>        
+        class Hamburger {
+            constructor (size, stuffing, toppings) {
+                this.orderedHamburgerSize = Hamburger.prototype.paramSize(size);            
+                this.orderedHamburgerStuffing = Hamburger.prototype.paramStuffing(stuffing);
+                this.orderedHamburgerToppings = Hamburger.prototype.paramToppings(toppings);                                                              
+            };
+            paramSize(size){
+                    switch (size) {
+                        case 'large':
+                            return(this.SIZE_LARGE);
+                        break;
+                        case 'small':
+                            return(this.SIZE_SMALL);
+                        break;
+                        default:
+                            Hamburger.prototype.HamburgerException('incorrect hamburger size');
+                        break;
+                    };                  
+            };
+            paramStuffing(stuffing){
+                let choosenProducts = {};               
+                stuffing.includes('cheese') ? choosenProducts.Cheese = this.STUFFING_CHEESE : false;
+                stuffing.includes('salad') ? choosenProducts.Salad = this.STUFFING_SALAD : false;
+                stuffing.includes('potato') ? choosenProducts.Potato = this.STUFFING_POTATO : false;
+                return choosenProducts;                      
+            };
+            paramToppings(toppings){
+                let choosenProducts = {};               
+                toppings.includes('mayo') ? choosenProducts.Mayonnaise = this.TOPPING_MAYO : false;
+                toppings.includes('spice') ? choosenProducts.Spices = this.TOPPING_SPICE : false;                
+                return choosenProducts;                      
+            };
+            set addTopping(toppingName){
+                if(toppingName !== 'mayo' && toppingName !== 'spice'){Hamburger.prototype.HamburgerException('incorrect hamburger topping')};
+                if(toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise !== undefined ){Hamburger.prototype.HamburgerException('incorrect hamburger topping')};
+                if(toppingName === 'spice' && this.orderedHamburgerToppings.Spices !== undefined ){Hamburger.prototype.HamburgerException('incorrect hamburger topping')};
+                let mayo = Hamburger.prototype.TOPPING_MAYO;
+                let spice = Hamburger.prototype.TOPPING_SPICE;                
+                toppingName === 'mayo' ? this.orderedHamburgerToppings.Mayonnaise = mayo : false;
+                toppingName === 'spice' ? this.orderedHamburgerToppings.Spices = spice :  false;                
+            };
+            set removeTopping(toppingName){
+                if(toppingName !== 'mayo' && toppingName !== 'spice'){Hamburger.prototype.HamburgerException('incorrect hamburger topping')};
+                if(toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise === undefined){Hamburger.prototype.HamburgerException('You dont have it already')};
+                if(toppingName === 'spice' && this.orderedHamburgerToppings.Spices === undefined ){Hamburger.prototype.HamburgerException('You dont have it already')};
+                toppingName === 'mayo' && this.orderedHamburgerToppings.Mayonnaise === Hamburger.prototype.TOPPING_MAYO ? delete this.orderedHamburgerToppings.Mayonnaise : false;
+                toppingName === 'spice' && this.orderedHamburgerToppings.Spices === Hamburger.prototype.TOPPING_SPICE ? delete this.orderedHamburgerToppings.Spices : false;
+            };
+            get getToppings(){
+                console.log(this.orderedHamburgerToppings);                
+            };
+            get getSize(){
+                console.log(this.orderedHamburgerSize);
+            };
+            get getStuffing(){
+                console.log(this.orderedHamburgerStuffing);
+            };
+            get calculatePrice(){
+                let burgerPrice = this.orderedHamburgerSize.price;
+                let stuffingPrice = Object.values(this.orderedHamburgerStuffing).reduce(function(resultValue, item, index, array){
+                    let price = +item.price;
+                    return +resultValue + item.price;
+                },[0]);
+                let toppingPrice = Object.values(this.orderedHamburgerToppings).reduce(function(resultValue, item, index, array){
+                    let price = +item.price;
+                    return +resultValue + item.price;
+                },[0]);
+                this.price = burgerPrice + toppingPrice + stuffingPrice;
+                return console.log(burgerPrice + toppingPrice + stuffingPrice);                              
+            };
+            get calculateCalories(){
+                let burgerEnergy = this.orderedHamburgerSize.energy;
+                let stuffingEnergy = Object.values(this.orderedHamburgerStuffing).reduce(function(resultValue, item, index, array){
+                    let energy = +item.energy;
+                    return +resultValue + item.energy;
+                },[0]);
+                let toppingEnergy = Object.values(this.orderedHamburgerToppings).reduce(function(resultValue, item, index, array){
+                    let energy = +item.energy;
+                    return +resultValue + item.energy;
+                },[0]);
+                this.calories = burgerEnergy + toppingEnergy + stuffingEnergy;
+                return console.log(burgerEnergy + toppingEnergy + stuffingEnergy);                              
+            };                
+        }
+
+        class Error {
+            HamburgerException(text) {
+                throw new Error(text);                
+            }                         
+        }        
+
+        Hamburger.prototype.SIZE_SMALL = {price: 50, energy: 20};
+        Hamburger.prototype.SIZE_LARGE = {price: 100, energy: 40};
+        Hamburger.prototype.STUFFING_CHEESE = {price: 10, energy: 20};
+        Hamburger.prototype.STUFFING_SALAD = {price: 20, energy: 5};
+        Hamburger.prototype.STUFFING_POTATO = {price: 15, energy: 10};
+        Hamburger.prototype.TOPPING_MAYO = {price: 20, energy: 5};
+        Hamburger.prototype.TOPPING_SPICE = {price: 15, energy: 0};
+        Hamburger.prototype.__proto__ = new Error;                     
+        
+        const myHamburger = new Hamburger('large',['cheese', 'salad', 'potato'],['mayo']);
+        console.log(myHamburger); 
+        myHamburger.addTopping = 'spice';
+        myHamburger.removeTopping = 'mayo';                 
+        myHamburger.getToppings;
+        myHamburger.getSize;
+        myHamburger.getStuffing;
+        myHamburger.calculatePrice;
+        myHamburger.calculateCalories;           
+    </script>    
+</body>
+</html>
