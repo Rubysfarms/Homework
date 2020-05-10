@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section class = "columns"></section>
+    <button class="add-column">Add new column</button>
+    <div class="new-card-form">
+        <input class="new-card-form__color" type="radio" value="blue" name="color">
+        <div class="color" style="background-color: rgb(58, 58, 200);"></div>
+        <input class="new-card-form__color" type="radio" value="green" name="color">
+        <div class="color" style="background-color: rgb(23, 131, 72);"></div>
+        <input class="new-card-form__color" type="radio" value="red" name="color">
+        <div class="color" style="background-color: rgb(200, 58, 77);"></div>
+        <input type="text" placeholder="Enter header" class="new-card-form__header">
+        <input type="text" placeholder="Enter note text" class="new-card-form__paragraph">        
+        <button class="submit">Apply changes</button>
+    </div>    
+</body>
+<style>
+    /* global */
+
+    body {
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .invisible {
+        display: none;    
+    }
+
+    /* columns */
+
+    .columns {
+        display: flex;
+        flex-wrap: wrap;     
+    }
+
+    .columns__column {
+        margin: 5px;
+        width: 200px;
+        display: inline-block;
+        flex-wrap: wrap;
+        flex-direction: column;
+        border-width: 10px 6px 10px 6px;
+        border-color: rgb(0, 121, 191);
+        border-style: solid;        
+        padding: 0 5px;
+        background-color: rgb(226, 228, 230);
+        height: 100%;            
+    }    
+
+    /* cards */
+    
+    .color {
+        display: inline-block;
+        height: 20px;
+        width: 100px;  
+        padding: 0 auto;  
+    }
+
+    h1 {
+        margin: 0;
+        font-size: 16px;
+        color: rgb(77, 77, 77);        
+        word-wrap: break-word;                
+    }
+
+    p {
+        margin-bottom: 0;
+        margin-top: 10px;
+        color: rgb(152, 153, 153);    
+        word-wrap: break-word;               
+    }
+
+    .columns__column_card {
+        padding: 5px 2px 5px 2px;
+        box-sizing: border-box;
+        min-height: 100px;
+        width: 100%;        
+        border-radius: 5px;
+        margin: 5px 0;
+        background-color: white;        
+        box-shadow: -1px 4px 4px -2px rgba(0,0,0,0.2);
+    }
+
+    .columns__column_card-hover {
+        background-color: hotpink;
+        border: dashed solid red;
+    }
+
+    .card_content {
+        box-sizing: border-box;
+        background-image: url('http://source.unsplash.com/200x100');
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-size: cover;
+    }
+
+    .card__content-hold {
+        border: 1px solid blue;
+    }
+
+    .add-button {
+        margin: 20px 0px 4px 0px;
+        font-size: 14px;
+        color: rgb(152, 153, 153);
+        cursor: pointer;
+    }
+    .sort-button {
+        font-size: 14px;
+        color: rgb(152, 153, 153);
+        cursor: pointer;
+        margin-bottom: 5px;
+    }
+
+    /* column button */
+
+    .add-column {
+        border: 1px solid rgb(152, 153, 153);
+        cursor: pointer;        
+        color: rgb(152, 153, 153);
+        background-color: rgb(226, 228, 230);
+        display: block;
+        margin: 10px auto;
+        padding: 10px;    
+    }
+
+    /* card form */
+
+    .new-card-form {        
+        text-align: center;
+        padding-top: 10px;        
+        margin: 0 auto;
+        position: absolute;
+        top: 50%;
+        left: 25%;
+        width: 50%;
+        height: 100px;
+        background-color: rgb(226, 228, 230);
+        border: 2px solid rgb(152, 153, 153);
+        border-radius: 5px;
+        visibility: hidden;        
+    }
+
+    .submit {        
+        border: 1px solid rgb(152, 153, 153);
+        cursor: pointer;        
+        color: rgb(152, 153, 153);
+        background-color: rgb(226, 228, 230);
+        display: block;
+        margin: 10px auto;
+        padding: 10px;   
+    }
+    
+</style>
+<script>
+    const newColumnButton = document.querySelector('.add-column');
+    const columnsSpace = document.querySelector('.columns');
+    
+    const SubmitForm = {
+        form : document.querySelector('.new-card-form'),    
+        formColor : document.querySelector('.new-card-form__color'),
+        formHeader : document.querySelector('.new-card-form__header'),
+        formParagraph : document.querySelector('.new-card-form__paragraph'),
+        applyButton : document.querySelector('.submit'),
+        color : null,
+        header : null,        
+        paragraph : null,
+        set incomeInfo({color, header, paragraph}){            
+            SubmitForm.color = color.style.backgroundColor;
+            SubmitForm.header = header;
+            SubmitForm.paragraph = paragraph;
+            SubmitForm.formHeader.value = `${SubmitForm.header.innerText}`;
+            SubmitForm.formParagraph.value = `${SubmitForm.paragraph.innerText}`;     
+        },        
+        applyChanges : function (){
+            SubmitForm.header.innerText = SubmitForm.formHeader.value;
+            SubmitForm.paragraph.innerText = SubmitForm.formParagraph.value;    
+            SubmitForm.form.style.visibility = "hidden";                         
+        }
+    }; 
+
+    class Column {
+        constructor(){
+            this.hoveredCard = null;                         
+            this.cards = [];            
+            this.column = document.createElement('div');
+            this.column.classList.add('columns__column');
+            columnsSpace.insertAdjacentElement('beforeend', this.column);
+            this.cardsSpace = document.createElement('div');
+            this.cardsSpace.classList.add('cards-space');           
+            this.newCardButton = document.createElement('div');
+            this.newCardButton.classList.add('add-button');
+            this.newCardButton.insertAdjacentText('beforeend', 'Add a card...');
+            this.column.insertAdjacentElement('afterbegin', this.newCardButton);            
+            this.newCardButton.addEventListener('click', this.addNewCard.bind(this));
+            this.sortButton = document.createElement('div');
+            this.sortButton.classList.add('sort-button');
+            this.sortButton.insertAdjacentText('beforeend', 'Sort cards by header');
+            this.column.insertAdjacentElement('beforeend', this.sortButton);
+            this.sortButton.addEventListener('click', this.sortCards.bind(this));
+            this.column.insertAdjacentElement('afterbegin', this.cardsSpace);                  
+        }
+        addNewCard(){    
+            const newCard = document.createElement('div');
+            newCard.classList.add('columns__column_card');
+            newCard.setAttribute('draggable', 'true');
+            newCard.insertAdjacentHTML('afterbegin','<div ondragenter="blockDrop(event);" class="color"></div><h1></h1><p></p>');        
+            this.cardsSpace.insertAdjacentElement('beforeend', newCard);   
+            this.cards.push(newCard);                                   
+            newCard.addEventListener('dragover', this.dragOver.bind(this));
+            newCard.addEventListener('dragleave', this.dragLeave.bind(this));
+            newCard.addEventListener('dragend', this.dragEnd.bind(this));
+            newCard.addEventListener('click', this.changeCard);      
+        }
+        sortCards(){
+            const sortedList = this.cards.sort(function(a,b){
+            const header1 = a.querySelector('h1').innerText;
+            const header2 = b.querySelector('h1').innerText;
+                if (header1 > header2) { 
+                    return 1; } 
+                if (header1 < header2) { 
+                    return -1; } 
+                return 0;   
+            });
+            
+            sortedList.forEach(item =>{
+                this.cardsSpace.insertAdjacentElement('beforeend', item);
+            });            
+        }        
+        dragOver(ev){            
+            ev.target.style.backgroundColor = 'rgba(0,121,191,0.5)';            
+            this.hoveredCard = ev.target;                                                             
+        }
+        dragLeave(ev){
+            ev.srcElement.style.backgroundColor = 'white';
+        }
+        dragEnd(ev){
+            if(this.cards.indexOf(ev.target) < this.cards.indexOf(this.hoveredCard)){
+                this.hoveredCard.insertAdjacentElement('afterend', ev.target);
+            } else if (this.cards.indexOf(ev.target) > this.cards.indexOf(this.hoveredCard)){
+                this.hoveredCard.insertAdjacentElement('beforebegin', ev.target);
+            };   
+            const newCards = this.cardsSpace.getElementsByClassName('columns__column_card');
+            this.cards = Array.from(newCards);            
+        }
+        changeCard(){
+            SubmitForm.form.style.visibility = 'visible';
+            const color = this.querySelector('.color');
+            const header = this.querySelector('h1');
+            const paragraph = this.querySelector('p');
+            SubmitForm.incomeInfo = {color:color, header:header, paragraph:paragraph};           
+            SubmitForm.applyButton.addEventListener('click', SubmitForm.applyChanges);                           
+        };   
+    };
+
+    function blockDrop(event){
+        console.log(event);        
+    }    
+
+    newColumnButton.addEventListener('click', function(){new Column});
+
+</script>
+</html>
