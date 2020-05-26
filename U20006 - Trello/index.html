@@ -9,12 +9,14 @@
     <section class = "columns"></section>
     <button class="add-column">Add new column</button>
     <div class="new-card-form">
+        <!-- <input class="new-card-form__color" type="radio" value="white" name="color">
+        <div class="color" style="background-color: rgb(255, 255, 255);"></div>
         <input class="new-card-form__color" type="radio" value="blue" name="color">
         <div class="color" style="background-color: rgb(58, 58, 200);"></div>
         <input class="new-card-form__color" type="radio" value="green" name="color">
         <div class="color" style="background-color: rgb(23, 131, 72);"></div>
         <input class="new-card-form__color" type="radio" value="red" name="color">
-        <div class="color" style="background-color: rgb(200, 58, 77);"></div>
+        <div class="color" style="background-color: rgb(200, 58, 77);"></div> -->
         <input type="text" placeholder="Enter header" class="new-card-form__header">
         <input type="text" placeholder="Enter note text" class="new-card-form__paragraph">        
         <button class="submit">Apply changes</button>
@@ -85,12 +87,7 @@
         background-color: white;        
         box-shadow: -1px 4px 4px -2px rgba(0,0,0,0.2);
     }
-
-    .columns__column_card-hover {
-        background-color: hotpink;
-        border: dashed solid red;
-    }
-
+    
     .card_content {
         box-sizing: border-box;
         background-image: url('http://source.unsplash.com/200x100');
@@ -163,7 +160,7 @@
     
     const SubmitForm = {
         form : document.querySelector('.new-card-form'),    
-        formColor : document.querySelector('.new-card-form__color'),
+        formColor : document.querySelectorAll('.new-card-form__color'),
         formHeader : document.querySelector('.new-card-form__header'),
         formParagraph : document.querySelector('.new-card-form__paragraph'),
         applyButton : document.querySelector('.submit'),
@@ -171,16 +168,19 @@
         header : null,        
         paragraph : null,
         set incomeInfo({color, header, paragraph}){            
-            SubmitForm.color = color.style.backgroundColor;
+            SubmitForm.color = color;
             SubmitForm.header = header;
             SubmitForm.paragraph = paragraph;
             SubmitForm.formHeader.value = `${SubmitForm.header.innerText}`;
-            SubmitForm.formParagraph.value = `${SubmitForm.paragraph.innerText}`;     
+            SubmitForm.formParagraph.value = `${SubmitForm.paragraph.innerText}`;                                    
         },        
         applyChanges : function (){
+            // let checkedButton = null; 
+            // SubmitForm.formColor.forEach(item => {if(item.checked){checkedButton = item.value}});
+            // console.log(checkedButton);            
             SubmitForm.header.innerText = SubmitForm.formHeader.value;
             SubmitForm.paragraph.innerText = SubmitForm.formParagraph.value;    
-            SubmitForm.form.style.visibility = "hidden";                         
+            SubmitForm.form.style.visibility = "hidden";                                               
         }
     }; 
 
@@ -209,7 +209,7 @@
             const newCard = document.createElement('div');
             newCard.classList.add('columns__column_card');
             newCard.setAttribute('draggable', 'true');
-            newCard.insertAdjacentHTML('afterbegin','<div ondragenter="blockDrop(event);" class="color"></div><h1></h1><p></p>');        
+            newCard.insertAdjacentHTML('afterbegin','<div class="nodrop color"></div><h1 class="nodrop"></h1><p class="nodrop"></p>');        
             this.cardsSpace.insertAdjacentElement('beforeend', newCard);   
             this.cards.push(newCard);                                   
             newCard.addEventListener('dragover', this.dragOver.bind(this));
@@ -232,19 +232,28 @@
                 this.cardsSpace.insertAdjacentElement('beforeend', item);
             });            
         }        
-        dragOver(ev){            
-            ev.target.style.backgroundColor = 'rgba(0,121,191,0.5)';            
+        dragOver(ev){         
+            ev.target.className.includes('nodrop') ? ev.target.parentElement.style.border = "4px solid rgba(0,121,191,0.5)" : ev.target.style.border = "4px solid rgba(0,121,191,0.5)";               
             this.hoveredCard = ev.target;                                                             
         }
         dragLeave(ev){
-            ev.srcElement.style.backgroundColor = 'white';
+            ev.srcElement.style.border = 'rgba(0,121,191,0.5)';
+            ev.srcElement.parentElement.style.border = 'rgba(0,121,191,0.5)';
         }
-        dragEnd(ev){
-            if(this.cards.indexOf(ev.target) < this.cards.indexOf(this.hoveredCard)){
-                this.hoveredCard.insertAdjacentElement('afterend', ev.target);
-            } else if (this.cards.indexOf(ev.target) > this.cards.indexOf(this.hoveredCard)){
-                this.hoveredCard.insertAdjacentElement('beforebegin', ev.target);
-            };   
+        dragEnd(ev){                              
+            if(!this.hoveredCard.className.includes('nodrop')){                                      
+                if(this.cards.indexOf(ev.target) < this.cards.indexOf(this.hoveredCard)){
+                        this.hoveredCard.insertAdjacentElement('afterend', ev.target);
+                } else if (this.cards.indexOf(ev.target) > this.cards.indexOf(this.hoveredCard)){
+                        this.hoveredCard.insertAdjacentElement('beforebegin', ev.target);
+                };
+            } else if(this.hoveredCard.className.includes('nodrop')){
+                if(this.cards.indexOf(ev.target) < this.cards.indexOf(this.hoveredCard.parentElement)){
+                        this.hoveredCard.parentElement.insertAdjacentElement('afterend', ev.target);
+                } else if (this.cards.indexOf(ev.target) > this.cards.indexOf(this.hoveredCard.parentElement)){
+                        this.hoveredCard.parentElement.insertAdjacentElement('beforebegin', ev.target);
+                };
+            }
             const newCards = this.cardsSpace.getElementsByClassName('columns__column_card');
             this.cards = Array.from(newCards);            
         }
@@ -257,11 +266,7 @@
             SubmitForm.applyButton.addEventListener('click', SubmitForm.applyChanges);                           
         };   
     };
-
-    function blockDrop(event){
-        console.log(event);        
-    }    
-
+    
     newColumnButton.addEventListener('click', function(){new Column});
 
 </script>
