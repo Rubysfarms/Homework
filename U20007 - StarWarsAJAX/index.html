@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<style>
+    .title{
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .episode{
+        margin-top: 10px;
+        font-size: 15px;
+    }
+    
+    .crawl{
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    .actors{
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+</style>
+<script>
+    const body = document.querySelector('body');
+    const requestURL = 'https://swapi.dev/api/films/';
+
+    const request = new XMLHttpRequest();
+    request.responseType = 'json';
+    request.open('GET', requestURL);
+    request.onload = function(){        
+        if(request.status >= 400){
+            console.log('error');
+        } else {
+            const films = request.response.results
+            films.forEach(element => {                
+                const title = document.createElement('div');
+                title.classList.add('title');
+                title.insertAdjacentText('beforeend', element.title);
+                const episodeID = document.createElement('div');
+                episodeID.classList.add('episode');
+                episodeID.insertAdjacentText('beforeend', `Episode number - ${element.episode_id}`);
+                const crawl = document.createElement('div');
+                crawl.classList.add('crawl');
+                crawl.insertAdjacentText('beforeend', element.opening_crawl);
+                const actors = document.createElement('div');
+                actors.classList.add('actors');                
+                body.insertAdjacentElement('beforeend', title);
+                body.insertAdjacentElement('beforeend', episodeID);
+                body.insertAdjacentElement('beforeend', crawl);
+                body.insertAdjacentElement('beforeend', actors);
+                element.characters.forEach(url =>{                                                    
+                    const actorsRequest = new XMLHttpRequest();
+                    actorsRequest.responseType = 'json';
+                    actorsRequest.open('GET', url);
+                    // console.log(actorsRequest);
+                    actorsRequest.onload = function(){                        
+                        // console.log(actorsRequest);
+                        if(request.status >= 400){
+                            console.log('error');
+                        } else {                            
+                            actors.insertAdjacentText('beforeend', `${actorsRequest.response.name},` )
+                        }
+                    }
+                    actorsRequest.send();                        
+                });
+            });            
+        }
+    }
+    request.onerror = function(){
+        console.log(request.response);
+    }
+    request.send();    
+
+</script>
+</html>
