@@ -1,0 +1,23 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.post_text {    
+    height: 110px;
+}
+
+[person_id] {
+    margin-left: 10px;
+    margin-top: 50px;
+    display: flex;    
+    width: 400px;
+    flex-direction: column;
+}
+
+.add_card{
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 100px;
+}
