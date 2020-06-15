@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>check IP information</button>
+    <div class='info'></div>    
+</body>
+<script>
+    const button = document.querySelector('button');
+    const div = document.querySelector('.info');
+
+    async function getIP(){
+        const result = await fetch('https://api.ipify.org/?format=json');
+        const data = await result.json();
+        return data;  
+    }
+
+    function getInfo(ip){
+        let allo;
+        ip.then(async function(result){            
+            const info = await fetch(`http://ip-api.com/json/${result.ip}?lang=ru&fields=continent,country,city,zip`);            
+            const data = await info.json();
+            div.innerHTML = '';
+            div.insertAdjacentHTML('afterbegin', 
+                `<p>Континент:${data.continent}</p>
+                <p>Країна:${data.country}</p>
+                <p>Місто:${data.city}</p>
+                <p>Поштовий індекс:${data.zip}</p>   
+            `);
+        });          
+    }
+
+    button.addEventListener('click', function(){
+        const ip = getIP();               
+        const info = getInfo(ip);        
+    });
+</script>
+</html>
