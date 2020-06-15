@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<style>
+    .title{
+        margin-top: 20px;
+        font-size: 20px;
+    }
+
+    .episode{
+        margin-top: 10px;
+        font-size: 15px;
+    }
+    
+    .crawl{
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+    .actors{
+        margin-top: 10px;
+        font-size: 12px;
+        font-style: italic;
+    }
+
+</style>
+<script>
+    const body = document.querySelector('body');
+    const requestURL = 'https://swapi.dev/api/films/';
+    
+    
+    async function getMovies(){
+        const moviesList = await fetch(requestURL);
+        const data = await moviesList.json();        
+        const films = data.results;
+        const allUrls = [];        
+        films.forEach(element => {          
+            allUrls.push(element.characters);                          
+            const title = document.createElement('div');
+            title.classList.add('title');
+            title.insertAdjacentText('beforeend', element.title);
+            const episodeID = document.createElement('div');
+            episodeID.classList.add('episode');
+            episodeID.insertAdjacentText('beforeend', `Episode number - ${element.episode_id}`);
+            const crawl = document.createElement('div');
+            crawl.classList.add('crawl');
+            crawl.insertAdjacentText('beforeend', element.opening_crawl);
+            const actors = document.createElement('div');
+            actors.classList.add('actors');                          
+            body.insertAdjacentElement('beforeend', title);
+            body.insertAdjacentElement('beforeend', episodeID);
+            body.insertAdjacentElement('beforeend', crawl);
+            body.insertAdjacentElement('beforeend', actors);
+            getActors(element.characters, actors);            
+        });               
+    }
+    getMovies(); 
+
+               
+    async function getActors(urls, domElem){
+        const actors = [];                         
+        urls.forEach(async function(item, index, array){            
+            const promise = await fetch(item);
+            const data = promise.json();
+            actors.push(data);
+            if (actors.length === urls.length){
+                promiseALL(actors);
+            };    
+        });
+        
+        function promiseALL (array){
+            Promise.all(array).then(values => {
+                values.forEach(item => {
+                    domElem.insertAdjacentText('beforeend', `${item.name},` );
+                });                
+            });
+        }     
+    }     
+
+</script>
+</html>
