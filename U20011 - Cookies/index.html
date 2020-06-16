@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/4cf0a3ed4d.js" crossorigin="anonymous"></script>
+    <link href="./css/normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <div class="container">    
+        <table class="table1">
+            <tr>
+                <td rowspan="2" class="table-name">
+                    <p class="header-choose">CHOOSE YOUR</p>
+                    <p class="header-plan">PRICING PLAN</p>
+                </td>
+                <td class="plan-name standart">STANDART</td>
+                <td class="plan-name ultimate">ULTIMATE</td>
+                <td class="plan-name premium">PREMIUM</td>
+            </tr>
+            <tr>
+                <td class="clearfix">
+                    <p class="dollar">$17</p>
+                    <p class="cent">.99</p>
+                    <p class="per-month">PER MONTH</p>
+                </td>
+                <td class="clearfix">
+                    <p class="dollar">$37</p>
+                    <p class="cent">.99</p>
+                    <p class="per-month">PER MONTH</p>
+                </td>
+                <td class="clearfix">
+                    <p class="dollar">$97</p>
+                    <p class="cent">.99</p>
+                    <p class="per-month">PER MONTH</p>
+                </td>
+            </tr>
+            <tr class="light-gray-row">
+                <td>
+                    <i class="fas fa-archive"></i>
+                    <span>STORAGE</span>
+                </td>
+                <td>
+                    <span>500GB STORAGE</span>
+                </td>
+                <td>
+                    <span>1000GB STORAGE</span>
+                </td>
+                <td>
+                    <span>2000GB STORAGE</span>
+                </td>
+            </tr>
+            <tr class="dark-gray-row">
+                <td>
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>BANDWIDTH</span>
+                </td>
+                <td colspan="2"><span>LIMITED</span></td>
+                <td><span>UNLIMITED</span></td>
+            </tr>
+            <tr class="light-gray-row">
+                <td>
+                    <i class="fas fa-envelope"></i>
+                    <span>EMAIL</span>
+                </td>
+                <td>
+                    <span>25 EMAILS</span>
+                </td>
+                <td>
+                    <span>45 EMAILS</span>
+                </td>
+                <td>
+                    <span>65 EMAILS</span>
+                </td>
+            </tr>
+            <tr class="dark-gray-row">
+                <td>
+                    <i class="far fa-life-ring"></i>
+                    <span>SUPPORT</span>
+                </td>
+                <td colspan="3">
+                    <span>24/7 SUPPORT</span>    
+                </td>
+            </tr>
+            <tr class="light-gray-row">
+                <td>
+                    <i class="fas fa-cube"></i>
+                    <span>PRODUCTS</span>
+                </td>
+                <td>
+                    <span>20 PRODUCTS</span>
+                </td>
+                <td>
+                    <span>30 PRODUCTS</span>
+                </td>
+                <td>
+                    <span>60 PRODUCTS</span>
+                </td>
+            </tr>
+            <tr class="dark-gray-row">
+                <td>
+                    <i class="fas fa-users"></i>
+                    <span>USERS</span>
+                </td>
+                <td>
+                    <span>1 USER</span>
+                </td>
+                <td>
+                    <span>10 USERS</span>
+                </td>
+                <td>
+                    <span>15 USERS</span>
+                </td>
+            </tr>
+            <tr class="button-row">
+                <td class="contact-us-cell">
+                    <a href="">CONTACT US
+                        <div class="button-dark-part"></div>
+                    </a>
+                </td>
+                <td>
+                    <a href="" class="buy-now-standart">BUY NOW
+                        <div class="button-dark-part"></div>
+                    </a>
+                </td>
+                <td>
+                    <a href="" class="buy-now-ultimate">BUY NOW
+                        <div class="button-dark-part"></div>
+                    </a>
+                </td>
+                <td>
+                    <a href="" class="buy-now-premium">BUY NOW
+                        <div class="button-dark-part"></div>
+                    </a>
+                </td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+    const button = document.querySelector('.contact-us-cell');
+    button.addEventListener('click', function(e){
+        e.preventDefault();
+        document.cookie = "experiment=novalue; max-age=300";
+                
+        function getCookie(name) {
+            let matches = document.cookie.match(new RegExp(
+                "(?:^|; )" + name.replace(/([\.$?*|{}\(\)\[\]\\\/\+^])/g, '\\$1') + "=([^;]*)"
+            ));
+            return matches ? decodeURIComponent(matches[1]) : undefined;
+        }
+        const result = getCookie('new-user');        
+        if(result == undefined){
+            document.cookie = "new-user=true; max-age=300";
+            console.log('true was set');
+        } else
+        if(result){           
+            document.cookie = "new-user=false; max-age=300"; 
+            console.log('false was set');           
+        }      
+    });
+</script>
