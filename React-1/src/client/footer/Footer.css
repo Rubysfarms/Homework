@@ -1,0 +1,54 @@
+.footer {
+    padding: 80px 90px 50px 90px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;    
+    background-color: rgb(255, 255, 255);    
+}
+
+.footerLink {
+    margin: 0 10px;
+    color: rgb(167, 170, 171);
+    text-decoration: none;    
+    font-stretch: expanded;
+}
+
+.footerLogo {
+    margin-right: 30px;   
+    color: rgb(59, 180, 224);
+    font-size: 40px;     
+}
+.logoBold{
+    font-weight: 900;
+    font-stretch: condensed;   
+}
+
+.logoThin {
+    font-weight: 100;  
+}
+
+.socials {
+    display: flex;
+}
+
+.footerSocial {
+    margin: 0 10px;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: block;
+    height: 32px;
+    width: 32px;
+}
+
+.copyright {
+    color: rgb(167, 170, 171);
+    width: 100%;
+    text-align: center;
+    margin-top: 75px;
+    font-stretch: expanded;
+}
+
+.boldText{
+    font-weight: 900;
+}

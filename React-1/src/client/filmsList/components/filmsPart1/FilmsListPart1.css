@@ -1,0 +1,41 @@
+.filmsNavigation {
+    position: relative;
+    padding: 50px 100px 0 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.filmGroup {
+    width: calc(auto + 20px);
+    border-style: none;
+    background-color: transparent;
+    cursor: pointer;
+    padding: 0;      
+}
+
+.groupName {
+    padding: 0 20px;
+}
+
+.underlineButton {       
+    width: 100%;
+    height: 4px;
+    background-color: rgb(225, 226, 227);
+}
+
+.underline {    
+    position: absolute;
+    top: 68px;
+    z-index: -5;
+    width: calc(100% - 200px);
+    height: 4px;
+    background-color: rgb(225, 226, 227);
+}
+
+.filmsListPart1 {
+    padding: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

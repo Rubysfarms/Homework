@@ -1,0 +1,22 @@
+.filmsLoading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 100px;
+}
+
+.loadingIMG {
+    width: 70px;
+    height: 20px;
+    background-position: center;
+    background-size: contain;
+    margin-bottom: 20px;
+}
+
+.loadingText {
+    font-size: 17px;
+    text-transform: uppercase;
+    color: rgb(167, 170, 171);
+    font-weight: 600;
+    letter-spacing: 2px;
+}

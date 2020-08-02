@@ -1,0 +1,72 @@
+.about {
+    width: 100%;
+    position: absolute;
+    bottom: 20px;    
+    color: rgb(255, 255, 255);
+    font-size: 45px;
+    z-index: 10;
+} 
+
+.aboutBack {    
+    position: absolute;
+    width: 100%;
+    bottom: -20px;
+    height: 386px;    
+    z-index: -5;    
+}   
+
+.filmName{
+    font-size: 55px;
+    text-transform: uppercase;
+    font-weight: 700;    
+    font-stretch: ultra-expanded;
+    margin-bottom: 0;    
+}
+
+.genre {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    word-spacing: 25px;    
+}
+
+.rates{
+    display: flex;
+    align-items: center;
+}
+
+.rateStar{
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.rateMark {
+    margin-left: 20px;
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: 2px solid rgb(10, 174, 228);    
+    font-size: 20px;
+    padding: 5px 10px 5px 10px;
+    margin-top: 8px;
+}
+
+.extraInfo {    
+    display: flex;
+    justify-content: space-between;
+}
+
+.moreInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 700px;
+    padding-right: 100px;
+}
+
+.mainFilmInfo {    
+    padding-left: 100px;
+}
+
+.buttonSemiHighlighted{
+    border-color:rgb(255, 255, 255);
+    background-color: transparent;    
+}

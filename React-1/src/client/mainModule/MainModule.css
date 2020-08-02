@@ -1,0 +1,10 @@
+.advertContainer {
+    width: 100%;
+    height: 1100px;
+    position: relative;
+    overflow: hidden;    
+}
+.advertBack {
+    min-height: 1100px;       
+    box-sizing: border-box;
+}

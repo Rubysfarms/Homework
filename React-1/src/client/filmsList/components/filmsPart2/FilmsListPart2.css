@@ -1,0 +1,6 @@
+.filmsListPart2 {
+    padding: 50px 100px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}

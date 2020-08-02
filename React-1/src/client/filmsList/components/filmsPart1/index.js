@@ -1,0 +1,1 @@
+export {FilmsListPart1} from './FilmsListPart1';

@@ -1,0 +1,70 @@
+.header {    
+    top: 0;
+    position: absolute;
+    width: 100%;
+}
+.logoMain {
+    z-index: 10;    
+    padding-left: 100px;
+    color: rgb(255, 255, 255);
+    font-size: 40px;     
+}
+.logoBold{
+    font-weight: 900;
+    font-stretch: condensed;   
+}
+
+.logoThin {
+    font-weight: 100;  
+}
+.headerBack {
+    width: 100%;
+    height: auto;
+    position: absolute;    
+}
+.menu {
+    padding-top: 50px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.userControls {
+    display: flex;
+    align-items: center;
+    z-index: 10;
+    padding-right: 100px;
+}
+
+.iconButton {
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.mainButton {
+    outline: none;
+    cursor: pointer;
+    padding: 8px 30px 8px 30px;    
+    font-size: 28px;
+    color: rgb(255, 255, 255);
+    border: 1px solid transparent;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-weight: 100;
+}
+.mainButton:hover{
+    color: rgb(204, 0, 102);
+}
+
+.buttonHighlighted{
+    background-color: rgb(59, 180, 224);
+}
+
+.buttonRegular {
+    background-color: transparent;
+}

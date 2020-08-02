@@ -1,0 +1,42 @@
+.advertisement {
+    height: 500px;
+    width: 100%;
+    margin-left: 100px;
+    box-sizing: border-box;
+    width: calc(100% - 200px);
+    background-position: center;    
+}
+
+.transparentBackground {
+    box-sizing: border-box;
+    background-color: rgba(0, 0, 0, 0.7);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 200px;
+}
+
+.advertText {
+    text-align: center;
+    text-transform: uppercase;
+    font-size: 35px;
+    color: rgb(255, 255, 255);    
+}
+
+.buttonSubscribe {
+    width: 240px;
+    background-color: rgb(59, 180, 224);
+    border: none;
+    border-radius: 5px;
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    padding: 20px 0;
+    cursor: pointer;
+}
+
+.buttonSubscribe:hover{
+    color: rgb(204, 0, 102);
+}
+
