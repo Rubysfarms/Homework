@@ -1,24 +1,24 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
-
 import './MainNavigation.css';
+import ProductsPage from './Products';
+import CartPage from '../components/Cart';
 
-const mainNavigation = (props, context) => (
-  <header className="main-navigation">
-    <nav>
-      <ul>
-        <li>
-          <NavLink to="/">Products</NavLink>
-        </li>
-        <li>
-          <NavLink to="/cart">Cart ({props.cartItemNumber})</NavLink>
-        </li>
-        <li>
-          <div className='clear-button'onClick={()=>{localStorage.setItem('cart', 'false'); window.location.reload();}}>Clear cart</div>
-        </li>        
-      </ul>
-    </nav>
-  </header>
-);
+const MainNavigation = ({state, dispatch, setVisibility, visibility}) => {   
+  return(
+    <>
+    <header className="main-navigation">
+      <nav>
+        <ul>
+          <li><div className='regular-button' onClick={()=>setVisibility('hidden')}>Products</div></li>
+          <li><div className='regular-button' onClick={()=>setVisibility('')}>Cart({state.quantity})</div></li>
+          <li><div className='clear-button' onClick={()=>dispatch({type: 'empty'})}>Clear cart</div></li>        
+        </ul>
+      </nav>
+    </header>
+    <ProductsPage dispatch={dispatch}/>
+    <CartPage visibility={visibility} state={state} dispatch={dispatch} setVisibility={setVisibility}/>    
+  </>
+  )
+};
 
-export default mainNavigation;
+export default MainNavigation;
