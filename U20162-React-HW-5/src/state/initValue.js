@@ -1,0 +1,1 @@
+export const initialValue = JSON.parse(localStorage.getItem('cart')) || {cart: {0:0, 1:0, 2:0}, quantity:0, visibility:'hidden'};
